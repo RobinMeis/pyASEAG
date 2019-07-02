@@ -1,4 +1,5 @@
 import requests
+from .departure import departure
 
 class departuresStopPoint:
     def __init__(self, vehicles, stopPoint):
