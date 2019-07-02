@@ -11,10 +11,14 @@ setuptools.setup(
      description="A Python3 Library and interactive Shell to access FormelASEAGs race data",
      long_description=long_description,
      long_description_content_type="text/markdown",
-     url="https://github.com/javatechy/dokr",
      packages=setuptools.find_packages(),
      classifiers=[
          "Programming Language :: Python :: 3",
          "Operating System :: OS Independent",
      ],
+     entry_points={
+        'console_scripts': [
+            'ASEAG = pyASEAG.__main__:main'
+        ]
+    },
  )
