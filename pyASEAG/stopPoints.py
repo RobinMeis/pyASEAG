@@ -48,3 +48,6 @@ class stopPoints:
 
     def getStop(self, stopId):
         return self.stopPoints[str(stopId)]
+
+    def getStopPoints(self):
+        return self.stopPoints.values()
