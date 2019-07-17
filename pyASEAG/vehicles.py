@@ -11,8 +11,11 @@ class vehicles:
             return None
 
     def addVehicle(self, vehicleId):
-        self.vehicles[vehicleId] = vehicle(vehicleId)
-        return self.vehicles[vehicleId]
+        if (vehicleId == -1):
+            return None
+        else:
+            self.vehicles[vehicleId] = vehicle(vehicleId)
+            return self.vehicles[vehicleId]
 
     def addDeparture(self, departure):
         try:
