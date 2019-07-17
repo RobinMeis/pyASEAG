@@ -5,7 +5,10 @@ class vehicles:
         self.vehicles = {}
 
     def getVehicle(self, vehicleId):
-        return self.vehicles[str(vehicleId)]
+        try:
+            return self.vehicles[str(vehicleId)]
+        except KeyError:
+            return None
 
     def addVehicle(self, vehicleId):
         self.vehicles[vehicleId] = vehicle(vehicleId)
