@@ -21,10 +21,17 @@ class stopPoints:
                 )
 
     def fetchDepartures(self):
-        for stop in self.stopPoints:
-            stop = self.stopPoints[stop]
-            if (stop._globalFetching):
-                stop.fetchDepartures()
+        r = requests.get("http://ivu.aseag.de/interfaces/ura/instant_V1?StopAlso=false&ReturnList=stopid,visitnumber,lineid,linename,directionid,destinationtext,destinationname,stoppointindicator,vehicleid,tripid,estimatedtime,expiretime")
+        r.raise_for_status()
+        for departureString in r.text.split("\n"):
+            departureLine = json.loads(departureString)
+            if (departureLine[0] == 1):
+                try:
+                    stopPoint = self.getStop(departureLine[1])
+                except KeyError:
+                    print("Unknown stop found!")
+                else:
+                    print(stopPoint.parseDepartures(departureString))
 
     def find(self, string):
         string = string.lower()

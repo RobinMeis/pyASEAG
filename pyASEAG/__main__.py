@@ -7,6 +7,7 @@ import readline
 import rlcompleter
 import dill
 import sys
+import time
 
 def help():
     print("TODO: help to implement help()")
@@ -20,14 +21,9 @@ def restore(filename="lastsession.pkl"):
 def fetcher(stops):
     while True:
         print("Fetching")
-        try:
-            stops.fetchDepartures()
-        except:
-            print("Failed")
-            time.sleep(10)
-        else:
-            print("Done")
-            time.sleep(60)
+
+        stops.fetchDepartures()
+
 
 busses = vehicles()
 stops = stopPoints(busses)
@@ -41,16 +37,6 @@ elisenbrunnen = stops.printFind("Elisenbrunnen")
 normaluhr = stops.printFind("Normaluhr")
 ludwig = stops.printFind("Ludwig Forum")
 stawag = stops.printFind("STAWAG")
-bushof.enableGlobalFetching()
-ponttor.enableGlobalFetching()
-hansemann.enableGlobalFetching()
-talbot.enableGlobalFetching()
-normaluhr.enableGlobalFetching()
-ludwig.enableGlobalFetching()
-elisenbrunnen.enableGlobalFetching()
-viktoriaallee.enableGlobalFetching()
-stawag.enableGlobalFetching()
-stops.fetchDepartures()
 
 vars = globals()
 vars.update(locals())

@@ -8,21 +8,10 @@ class stopPoint:
         self.latitude = latitude
         self.longitude = longitude
         self.departures = departuresStopPoint(self.stopPoints.vehicles, self)
-        self._globalFetching = False
-
-    def enableGlobalFetching(self):
-        self._globalFetching = True
-
-    def disableGlobalFetching(self):
-        self._globalFetching = False
-
-    def fetchDepartures(self):
-        self.departures.fetchDepartures()
 
     def print(self):
         print("Information for \"%s\" (%d):\n" % (self.stopPointName, self.stopPointId))
         print("Latitude : %f\nLongitude: %f" % (self.latitude, self.longitude))
-        print("Global Fetching: %s" % (self._globalFetching,))
 
     def getDepartures(self):
         return self.departures.getDepartures()
@@ -35,3 +24,6 @@ class stopPoint:
 
     def addDeparture(self, newDeparture):
         return self.departures.addDeparture(newDeparture)
+
+    def parseDepartures(self, departureString):
+        return self.departures.parseDeparture(departureString)

@@ -7,11 +7,6 @@ class departuresStopPoint:
         self.stopPoint = stopPoint
         self.departures = {}
 
-    def fetchDepartures(self):
-        r = requests.get("http://ivu.aseag.de/interfaces/ura/instant_V1?StopAlso=false&ReturnList=visitnumber,lineid,linename,directionid,destinationtext,destinationname,stoppointindicator,vehicleid,tripid,estimatedtime,expiretime&stopId=%d" % (self.stopPoint.stopPointId,))
-        for line in r.text.split("\n"):
-            self.parseDeparture(line)
-
     def addDeparture(self, newDeparture):
         try:
             self.departures[newDeparture.tripId]
