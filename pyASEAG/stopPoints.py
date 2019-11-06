@@ -31,7 +31,8 @@ class stopPoints:
                 except KeyError:
                     print("Unknown stop found!")
                 else:
-                    print(stopPoint.parseDepartures(departureString))
+                    if (not stopPoint.parseDepartures(departureString)):
+                        print("Parsing failed for a stop")
 
     def find(self, string):
         string = string.lower()
